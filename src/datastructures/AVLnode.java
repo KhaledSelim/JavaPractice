@@ -2,7 +2,7 @@ package datastructures;
 
 /**
  *
- * @author LukasVyhnalek
+ * @author khaled.selim
  */
 public class AVLnode {
 
