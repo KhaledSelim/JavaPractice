@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  *
- * @author LukasVyhnalek
+ * @author khaled.selim
  */
 public class TrieNode {
 
