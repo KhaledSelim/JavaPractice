@@ -40,6 +40,38 @@ public class AlgorithmsDataStructure {
         factorialVisualization(4);
     }
 
+    public static void countingSort(int[] input) {
+        // Find the maximum and minimum values in the input array
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        
+        for (int num : input) {
+            if (num > max) {
+                max = num;
+            }
+            if (num < min) {
+                min = num;
+            }
+        }
+        
+        // Create a count array to store the frequency of each element
+        int[] count = new int[max - min + 1];
+        
+        // Store the count of each element
+        for (int num : input) {
+            count[num - min]++;
+        }
+        
+        // Rebuild the sorted array from the count array
+        int index = 0;
+        for (int i = 0; i < count.length; i++) {
+            while (count[i] > 0) {
+                input[index++] = i + min;
+                count[i]--;
+            }
+        }
+    }
+
     public static void selectionSort(int[] input) {
         for (int i = 0; i < input.length - 1; i++) {
             // i points at first number behind "wall"
@@ -66,7 +98,33 @@ public class AlgorithmsDataStructure {
     /**
      * ***************************************************************************************************
      */
+
     public static void bubbleSort(int[] input) {
+        boolean swapped;
+        for (int i = 0; i < input.length - 1; i++) {
+            swapped = false; // Reset the swapped flag
+            
+            for (int j = 0; j + 1 < input.length - i; j++) {
+                if (input[j] > input[j + 1]) {
+                    // Swap elements
+                    int temp = input[j];
+                    input[j] = input[j + 1];
+                    input[j + 1] = temp;
+                    
+                    swapped = true; // A swap was made
+                }
+            }
+            
+            // If no elements were swapped, the array is sorted
+            if (!swapped) {
+                break; // Exit early since the array is already sorted
+            }
+        }
+    }
+
+    
+    
+    public static void badBubbleSort(int[] input) {
         for (int i = 0; i < input.length - 1; i++) {
             // i represents how many elements have bubbled to correct place
             for (int j = 0; j + 1 < input.length - i; j++) {
